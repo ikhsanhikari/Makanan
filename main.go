@@ -6,5 +6,5 @@ import (
 
 
 func main() {
-	delivery.ReadAllUsersEndpoint()
+	delivery.UserEndpoint()
 }

@@ -32,6 +32,7 @@ func ReadAll()[]model.UserModel{
 
 		if err != nil {
 			fmt.Println(err.Error())
+			return nil
 		}
 
 		result = append(result, each)
@@ -46,4 +47,72 @@ func ReadAll()[]model.UserModel{
 	return result
 
 }
-	
+
+func SaveUser(U *model.UserModel) *model.ResponseModel {
+	Res := &model.ResponseModel{500,"Internal Server Error"}
+	db, err := driver.Connect()
+
+	if err != nil {
+		fmt.Println(err.Error())
+        return Res
+	}
+
+	defer db.Close()
+
+	 _, err = db.Exec("insert into tb_user values (?, ?, ?, ?, ?, ?, ?)", U.Id, U.NamaUser,U.Username,U.Password, U.IdRole, U.Phone, U.Email)
+    if err != nil {
+        fmt.Println(err.Error())
+        Res = &model.ResponseModel{400,"Failed save Data"} 
+        return Res
+    }
+    fmt.Println("insert success!")
+    Res = &model.ResponseModel{200,"Success save Data"} 
+    return Res
+}
+
+
+func UpdateUser(U *model.UserModel) *model.ResponseModel {
+	Res := &model.ResponseModel{500,"Internal Server Error"}
+	db, err := driver.Connect()
+
+	if err != nil {
+		fmt.Println(err.Error())
+		
+        return Res
+	}
+
+	defer db.Close()
+
+	 _, err = db.Exec("update tb_user set nama_user = ?, username = ?, password = ? , id_role = ? , phone = ?, email = ? where id = ?", U.NamaUser,U.Username,U.Password, U.IdRole, U.Phone, U.Email,U.Id)
+    if err != nil {
+        fmt.Println(err.Error())
+        Res = &model.ResponseModel{400,"Failed save Data"} 
+        return Res
+    }
+    fmt.Println("Update success!")
+    Res = &model.ResponseModel{200,"Success save Data"} 
+    return Res
+}
+
+func DeleteUser(Id int) *model.ResponseModel {
+	Res := &model.ResponseModel{500,"Internal Server Error"}
+	db, err := driver.Connect()
+
+	if err != nil {
+		fmt.Println(err.Error())
+        return Res
+	}
+
+	defer db.Close()
+
+	 _, err = db.Exec("delete from tb_user where id = ?",Id)
+    if err != nil {
+        fmt.Println(err.Error())
+        Res = &model.ResponseModel{400,"Failed save Data"} 
+        return Res
+    }
+    fmt.Println("Delete success!")
+    Res = &model.ResponseModel{200,"Success save Data"} 
+    return Res
+}
+

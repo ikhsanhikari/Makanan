@@ -1,7 +1,7 @@
 package model
 
 
-type transaksiModel struct{
+type TransaksiModel struct{
 	Id int 					`json:"id" validate:"required"`
 	IdUser string 			`json:"idUser" validate:"required"`
 	KodeMakanan string 		`json:"KodeMakanan" validate:"required"`
