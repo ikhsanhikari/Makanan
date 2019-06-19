@@ -1,9 +1,5 @@
 package model
 
-import (
-	"gopkg.in/go-playground/validator.v9"
-)
-
 
 type UserModel struct {
 	Id int 			`json:"id" validate:"required"`

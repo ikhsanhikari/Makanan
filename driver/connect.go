@@ -3,7 +3,7 @@ package driver
 import "database/sql"
 import _ "github.com/go-sql-driver/mysql"
 
-func connect() (*sql.DB, error) {
+func Connect() (*sql.DB, error) {
 	dbDriver := "mysql"
 	dbUser := "root"
 	dbPass := ""

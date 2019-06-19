@@ -1,8 +1,6 @@
 package model
 
-import (
-	"gopkg.in/go-playground/validator.v9"
-)
+
 
 
 type roleModel struct {
