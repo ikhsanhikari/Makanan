@@ -1,8 +1,4 @@
-package main
-
-import (
-	"gopkg.in/go-playground/validator.v9"
-)
+package model
 
 
 type transaksiModel struct{
@@ -11,5 +7,5 @@ type transaksiModel struct{
 	KodeMakanan string 		`json:"KodeMakanan" validate:"required"`
 	JumlahMakanan string 	`json:"jumlahMakanan" validate:"required"`
 	CreatedAt int 			`json:"createdAt" validate:"required"`
-	JumlahUang string 		`json:"jumlahUang"`
+	JumlahUang string 		`json:"jumlahUang" validate:"required"`
 }

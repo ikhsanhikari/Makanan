@@ -1,17 +1,14 @@
-package main
+package delivery 
 
 
 import (
-	"net/http"
 	"Makanan/service"
 	"github.com/labstack/echo"
 )
 
-func main() {
+func ReadAllUsersEndpoint() {
 	e := echo.New()
-	e.GET("/v1/api/user/readAll", func(c echo.Context) error {
-		result := service.ReadAllUsers()
-		return c.JSON(http.StatusOK, result)
-	})
+	e.GET("/v1/api/user/readAll", service.ReadAllUsers)
+
 	e.Logger.Fatal(e.Start(":1323"))
 }
