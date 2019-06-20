@@ -8,9 +8,9 @@ type MakananModel struct {
 	Harga int 			`json:"harga" validate:"required"`
 	Stok int 			`json:"stok" validate:"required"`
 	CreatedAt string 	`json:"createdAt" `
-	UpdateAt string 	`json:"updateAt" `
+	UpdatedAt string 	`json:"updateAt" `
 	ExpiredAt string 	`json:"expiredAt" validate:"required"`
 	UpdateBy string 	`json:"updateBy"`
-	CreatedBy string 	`json:"createdBy"`
+	CreateBy string 	`json:"createdBy"`
 
 }
